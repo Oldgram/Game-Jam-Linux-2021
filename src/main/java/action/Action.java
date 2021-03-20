@@ -1,34 +1,22 @@
 package action;
 
 import State.State;
+import object.Object;
+
 import java.util.List;
 
-public class Action {
-    private final int id;
-    private final String name;
-    private String description;
+public class Action extends Object {
     private final int cost;
     private int impact;
     private List<State> targets;
 
     public Action (int id, String name,  String description, int cost, int impact) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+        super(id, name, description);
         this.cost = cost;
         this.impact = impact;
     }
 
-    @Override
-    public String toString() { return "name=" + name + ", description=" + description; }
-
-    public int getId() { return this.id; }
-
-    public String getName() { return this.name; }
-
-    public String getDescription() { return this.description; }
-
-    public void setDescription(String description) { this.description = description; }
+    public int getCost() { return this.cost; }
 
     public int getImpact() { return this.impact; }
 

@@ -1,32 +1,18 @@
 package event;
 
 import State.State;
+import object.Object;
+
 import java.util.List;
 
-public class Event {
-    private final int id;
-    private final String name;
-    private String description;
+public class Event extends Object {
     private int impact;
     private List<State> targets;
 
     public Event (int id, String name,  String description, int impact) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+        super(id, name, description);
         this.impact = impact;
     }
-
-    @Override
-    public String toString() { return "name=" + name + ", description=" + description; }
-
-    public int getId() { return this.id; }
-
-    public String getName() { return this.name; }
-
-    public String getDescription() { return this.description; }
-
-    public void setDescription(String description) { this.description = description; }
 
     public int getImpact() { return this.impact; }
 
