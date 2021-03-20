@@ -1,19 +1,21 @@
-package Event;
+package action;
 
 import State.State;
 import java.util.List;
 
-public class Event {
+public class Action {
     private final int id;
     private final String name;
     private String description;
+    private final int cost;
     private int impact;
     private List<State> targets;
 
-    public Event (int id, String name,  String description, int impact) {
+    public Action (int id, String name,  String description, int cost, int impact) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.cost = cost;
         this.impact = impact;
     }
 
