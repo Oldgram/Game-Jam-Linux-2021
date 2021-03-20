@@ -37,10 +37,10 @@ public class Handler {
      * @param id : the id of the desired action
      * @return the event as an instance of Action
      */
-    private static Object getObject(String type, int id) throws NoSuchElementException, IOException, SAXException, ParserConfigurationException {
+    public static Object getObject(String type, int id) throws NoSuchElementException, IOException, SAXException, ParserConfigurationException {
         // Source : https://www.javatpoint.com/how-to-read-xml-file-in-java
         //creating a constructor of file class and parsing an XML file
-        File file = new File("./" + type + "List.xml");
+        File file = new File("src/main/resources/xml/" + type + "List.xml");
         //an instance of factory that gives a document builder
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         //an instance of builder to parse the specified xml file
@@ -71,7 +71,7 @@ public class Handler {
                 Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()),
                 element.getElementsByTagName("name").item(0).getTextContent(),
                 element.getElementsByTagName("description").item(0).getTextContent(),
-                Integer.parseInt(element.getElementsByTagName("action").item(0).getTextContent()),
+                Integer.parseInt(element.getElementsByTagName("cost").item(0).getTextContent()),
                 Integer.parseInt(element.getElementsByTagName("impact").item(0).getTextContent())
         );
     }

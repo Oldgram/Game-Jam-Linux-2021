@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<class>
+    <action>
+        <id>1</id>
+        <name>Discours</name>
+        <description>Lance un discours pour convertir des électeurs.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+</class>
