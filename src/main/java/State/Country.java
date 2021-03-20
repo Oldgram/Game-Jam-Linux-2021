@@ -57,7 +57,7 @@ public class Country {
 
 
     
-    public List<State> listing() {
+    public List<State> GetListing() {
         List<State> statelist = new ArrayList<State>();
         statelist.add(Alabama);
         statelist.add(Alaska);
