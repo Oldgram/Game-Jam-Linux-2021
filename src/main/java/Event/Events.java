@@ -1,10 +1,10 @@
 package Event;
 
-import State.State;
-import java.util.List;
+import java.io.File;
 
 public class Events {
     public static Event getEvent(int id) {
-        return new Event;
+        File file = new File("./EventsLists.xml");
+        return new Event(0, "0", "placeholder", 0);
     }
 }
