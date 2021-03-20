@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<class>
+    <event>
+        <id>1</id>
+        <name>Stop the count</name>
+        <description>GAME OVER</description>
+        <impact>-10000000000000000000000</impact>
+    </event>
+</class>
