@@ -40,6 +40,6 @@ public class Events {
                 }
             }
         } catch (Exception e) { e.printStackTrace(); }
-        return new Event(-1, "Error", "You should not be seing this", 0);
+        return new Event(-1, "Error", "You should not be seeing this", 0);
     }
 }
