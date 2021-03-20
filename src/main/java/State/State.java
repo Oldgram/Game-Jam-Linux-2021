@@ -10,6 +10,7 @@ public class State {
         this.name = name;
         this.population = population;
         this.weight = weight;
+        this.republicanScore = 50;
     }
 
     public State (String name, int population, int weight, int republicanScore){
