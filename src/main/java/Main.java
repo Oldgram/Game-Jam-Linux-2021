@@ -9,6 +9,7 @@ public class Main {
             BeginDrawing();
             DrawText("Hello world", 190, 200, 20, VIOLET);
             DrawFPS(20, 20);
+            ClearBackground(RAYWHITE);
             EndDrawing();
         }
 
