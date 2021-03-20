@@ -1,6 +1,6 @@
-package Event;
+package event;
 
-import State.State;
+import state.State;
 import java.util.List;
 
 public class Event {
