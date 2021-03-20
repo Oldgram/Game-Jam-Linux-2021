@@ -19,6 +19,10 @@ public class State {
         this.republicanScore = republicanScore;
     }
 
+    @Override
+    public String toString() {
+        return "name=" + name;
+    }
 
     public int getRepublicanScore() {
         return republicanScore;
