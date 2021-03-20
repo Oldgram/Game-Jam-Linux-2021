@@ -1,19 +1,18 @@
 package Event;
 
 import State.State;
-
 import java.util.List;
 
 public class Event {
-    private final String name;
     private final int id;
+    private final String name;
     private String description;
     private int impact;
     private List<State> targets;
 
-    public Event (String name, int id, String description, int impact) {
-        this.name = name;
+    public Event (int id, String name,  String description, int impact) {
         this.id = id;
+        this.name = name;
         this.description = description;
         this.impact = impact;
     }
