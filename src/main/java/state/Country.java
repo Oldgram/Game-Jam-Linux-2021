@@ -6,7 +6,6 @@ import java.util.List;
 public class Country {
 
     public State Alabama = new State("Alabama",4_903_185,7);
-    public State Alaska = new State("Alaska",731_545,1);
     public State Arizona = new State("Arizona",7_278_717,9);
     public State Arkansas = new State("Arkansas",3_017_804,4);
     public State Californie = new State("Californie",	39_512_223,53);
@@ -60,7 +59,6 @@ public class Country {
     public List<State> getStateList() {
         List<State> stateList = new ArrayList<State>();
         stateList.add(Alabama);
-        stateList.add(Alaska);
         stateList.add(Arizona);
         stateList.add(Arkansas);
         stateList.add(Californie);
