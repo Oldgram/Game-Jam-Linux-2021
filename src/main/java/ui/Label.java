@@ -65,7 +65,7 @@ public class Label extends UIComponent {
 
     @Override
     public void draw(){
-        DrawRectangle(x, y, 180, 30, GRAY);
-        DrawText(text, x + 10, y, 28, RAYWHITE);
+        DrawRectangle(x, y, 180, 30, backgroundColor);
+        DrawText(text, x + 10, y, 28, textColor);
     }
 }
