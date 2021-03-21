@@ -15,6 +15,7 @@ public class UI {
 
     public enum staticComponents {
         STATE,
+        DATE,
         POPULATION,
         REPUBLICANS,
         GAUGE,
@@ -50,6 +51,8 @@ public class UI {
     private void initializeTopRightPanel(){
         this.topRightPannelComponents.put(staticComponents.STATE,
                 new Label(1920 - 470, 20, "Minesotta", 28));
+        this.topRightPannelComponents.put(staticComponents.DATE,
+                new Label(1920 - 220, 20, "Mardi machin chouette", 22));
         this.topRightPannelComponents.put(staticComponents.POPULATION,
                 new Label(1920 - 470, 80, "- Nombre habitants hihi", 22));
         this.topRightPannelComponents.put(staticComponents.REPUBLICANS,
@@ -88,8 +91,8 @@ public class UI {
         scrollingText.draw();
     }
 
-    public Collection<UIComponentInterface> getTopRightPannelComponents() {
-        return topRightPannelComponents.values();
+    public HashMap<staticComponents, UIComponentInterface> getTopRightPannelComponents() {
+        return topRightPannelComponents;
     }
 
     public void addTopRightPannelComponents(staticComponents staticComponents, UIComponentInterface uiComponent) {
