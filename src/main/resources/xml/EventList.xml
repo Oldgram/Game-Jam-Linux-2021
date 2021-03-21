@@ -116,7 +116,7 @@
     <event>
         <id>14</id>
         <name>Des zombies!</name>
-        <description>Une attack de zombie est survenue , heureusement just quelque mort...</description>
+        <description>Une attaque de zombie est survenue ! Heureusement il n'y a eu que quelque morts...</description>
         <cost>0</cost>
         <impact>-10</impact>
     </event>
@@ -124,7 +124,7 @@
     <event>
         <id>15</id>
         <name>Mein kampf </name>
-        <description>Vous avez fait un discour sur Mein Kampf , hélasse ça n'a pas fais Führer</description>
+        <description>Vous avez fait un discours sur Mein Kampf, hélasse ça n'a pas fait Führer</description>
         <cost>0</cost>
         <impact>-10</impact>
     </event>
@@ -132,7 +132,7 @@
     <event>
         <id>16</id>
         <name>Mein kampf </name>
-        <description>Vous avez fait un discour sur Mein Kampf , ça a fais Führer</description>
+        <description>Vous avez fait un discours sur Mein Kampf, ça a fait Führer</description>
         <cost>0</cost>
         <impact>10</impact>
     </event>
