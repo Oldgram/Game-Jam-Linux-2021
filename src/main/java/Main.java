@@ -1,5 +1,6 @@
 import gametime.GameTime;
 import state.Country;
+import ui.Button;
 import ui.UI;
 import map.Map;
 
@@ -23,6 +24,8 @@ public class Main {
             gt.testsec(map);
             map.update();
             ui.update();
+            // Button button = new Button();
+            ClearBackground(backgroundColor);
             EndDrawing();
         }
 
