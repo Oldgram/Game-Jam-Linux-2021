@@ -76,6 +76,8 @@ public class GameTime {
 
     private void changeActualDate(Country ct) {
         this.actualDate = this.DateList.get(this.getMin());
+        Player p = Player.getInstance();
+        p.addActionPoints(p.getActionPool());
         Random r = new Random();
         int eventId = r.nextInt(this.numberOfEvent)+1;
         Object object = new Object();
@@ -83,6 +85,6 @@ public class GameTime {
             object = Handler.getObject("Event", eventId);
         } catch (Exception e) { e.printStackTrace(); }
         State eventState = ct.getStateList().get(r.nextInt(49));
-        Handler.trigger(object, eventState, Player.getInstance());
+        Handler.trigger(object, eventState, p);
     }
 }

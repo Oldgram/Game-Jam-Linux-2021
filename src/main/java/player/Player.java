@@ -8,12 +8,12 @@ import java.util.List;
 
 public class Player {
     private int actionPoints;
-    private int pointsGeneration;
+    private int actionPool;
     private List<Object> upgradeList;
 
     private Player() {
         this.actionPoints = 0;
-        this.pointsGeneration = 1;
+        this.actionPool = 10;
         this.upgradeList = new ArrayList<>(Collections.emptyList());
     }
 
@@ -32,15 +32,13 @@ public class Player {
 
     public void addActionPoints(int amount) { this.actionPoints += amount; }
 
-    private int getPointsGeneration() { return this.pointsGeneration; }
+    public int getActionPool() { return this.actionPool; }
 
-    private void setPointsGeneration(int value) { this.pointsGeneration = value; }
-
-    private void addPointGeneration(int value) { this.pointsGeneration += value; }
+    public void increaseActionPool(int amount) { this.actionPool += amount; }
 
     public List<Object> getUpgradeList() { return this.upgradeList; }
 
-    public void addUpgrade(Object upgrade) { this.upgradeList.add(upgrade); }
+    public void addUpgrade(Object upgrade) { this.upgradeList.add(upgrade); this.addActionPoints(upgrade.getImpact()); }
 
     public boolean asUpgrade(Object upgrade) { return this.upgradeList.contains(upgrade); }
 }
