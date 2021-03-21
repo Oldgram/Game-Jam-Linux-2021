@@ -38,7 +38,7 @@ public class Player {
 
     public List<Object> getUpgradeList() { return this.upgradeList; }
 
-    public void addUpgrade(Object upgrade) { this.upgradeList.add(upgrade); this.addActionPoints(upgrade.getImpact()); }
+    public void addUpgrade(Object upgrade) { this.upgradeList.add(upgrade); }
 
     public boolean asUpgrade(Object upgrade) { return this.upgradeList.contains(upgrade); }
 }

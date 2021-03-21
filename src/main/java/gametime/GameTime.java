@@ -35,7 +35,6 @@ public class GameTime {
     private long time;
 
     public GameTime(int numberOfEvent){
-
         this.numberOfEvent = numberOfEvent;
         time = System.currentTimeMillis();
     }
@@ -63,7 +62,6 @@ public class GameTime {
     public void iccMin(Country ct) {
         this.Min ++;
         changeActualDate(ct);
-        
     }
 
     public int getTick() {

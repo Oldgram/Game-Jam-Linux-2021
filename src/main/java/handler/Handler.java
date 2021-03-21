@@ -153,10 +153,12 @@ public class Handler {
         switch (upgrade.getId()) {
             case 1:
             case 2:
+                player.addActionPoints(upgrade.getImpact());
                 player.addUpgrade(upgrade);
                 break;
             case 3:
                 if (player.asUpgrade(getObject("Upgrade", 2))) {
+                    player.addActionPoints(upgrade.getImpact());
                     player.addUpgrade(upgrade);
                 } else {
                     triggerEvent(getObject("Event", 97), state, player);
