@@ -1,18 +1,19 @@
 package gametime;
 
 
+import handler.Handler;
 import object.Object;
 import player.Player;
 import state.Country;
-import handler.Handler;
 import state.State;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+
 public class GameTime {
+    private static Country country ;
     private int Tick = 0;
     private int Sec = 0;
     private int Min = 0;
@@ -44,12 +45,12 @@ public class GameTime {
         return this.Sec;
     }
 
-    public void testsec(Country ct) {
+    public void testsec() {
         if ( System.currentTimeMillis() - time >= 1000){
             this.Sec ++;
             if (this.Sec >= 60){
                 this.Sec = 0;
-                iccMin(ct);
+                iccMin();
             }
             time = System.currentTimeMillis();
         }
@@ -59,9 +60,9 @@ public class GameTime {
         return this.Min;
     }
 
-    public void iccMin(Country ct) {
+    public void iccMin() {
         this.Min ++;
-        changeActualDate(ct);
+        changeActualDate();
     }
 
     public int getTick() {
@@ -72,7 +73,7 @@ public class GameTime {
         return this.actualDate;
     }
 
-    private void changeActualDate(Country ct) {
+    private void changeActualDate() {
         this.actualDate = this.DateList.get(this.getMin());
         Player p = Player.getInstance();
         p.addActionPoints(p.getActionPool());
@@ -82,7 +83,11 @@ public class GameTime {
         try {
             object = Handler.getObject("Event", eventId);
         } catch (Exception e) { e.printStackTrace(); }
-        State eventState = ct.getStateList().get(r.nextInt(49));
+        State eventState = country.getStateList().get(r.nextInt(49));
         Handler.trigger(object, eventState, p);
+
+        country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
+
+
     }
 }
