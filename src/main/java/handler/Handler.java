@@ -102,10 +102,10 @@ public class Handler {
                 player.addActionPoints(-5);
                 break;
             case 3:
-                country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-5,3));
                 break;
             case 4:
-                country.getStateList().forEach(x -> x.republicanrandomchange(-15,15));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-15,10));
                 break;
             case 5:
                 country.getStateList().forEach(x -> x.republicanrandomchange(0,5));
@@ -114,7 +114,7 @@ public class Handler {
                 country.getStateList().forEach(x -> x.republicanrandomchange(-5,0));
                 break;
             case 7:
-                country.getStateList().forEach(x -> x.republicanrandomchange(0,5));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-5,0));
                 break;
             case 8:
                 state.republicanrandomchange(-10,0);
@@ -131,13 +131,13 @@ public class Handler {
             case 12:
                 state.republicanrandomchange(0,5);
             case 13:
-                country.getStateList().forEach(x -> x.republicanrandomchange(-10,10));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-10,5));
                 break;
             case 14:
-                state.republicanrandomchange(-10,0);
+                state.republicanrandomchange(-10,-3);
                 break;
             case 15:
-                state.republicanrandomchange(-5,0);
+                state.republicanrandomchange(-5,-1);
                 break;
             case 16:
                 state.republicanrandomchange(0,5);

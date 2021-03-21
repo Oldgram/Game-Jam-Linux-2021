@@ -88,7 +88,7 @@ public class GameTime {
             State eventState = country.getStateList().get(r.nextInt(48));
             Handler.trigger(object, eventState, p);
 
-            country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
+            country.getStateList().forEach(x -> x.republicanrandomchange(-5,2));
         } else {
             System.out.println(country.getWinner() * 100);
         }
