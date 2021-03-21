@@ -32,30 +32,27 @@ public class GameTime {
     );
     private String actualDate = DateList.get(0);
     private int numberOfEvent;
+    private long time;
 
     public GameTime(int numberOfEvent){
+
         this.numberOfEvent = numberOfEvent;
+        time = System.currentTimeMillis();
     }
 
-
-    public void iccTick(Country ct) {
-        this.Tick ++;
-        if (this.Tick >= 20){
-            this.Tick = 0;
-            iccSec(ct);
-        }
-
-    }
 
     public int getSec() {
         return this.Sec;
     }
 
-    public void iccSec(Country ct) {
-        this.Sec ++;
-        if (this.Sec >= 60){
-            this.Sec = 0;
-            iccMin(ct);
+    public void testsec(Country ct) {
+        if ( System.currentTimeMillis() - time >= 1000){
+            this.Sec ++;
+            if (this.Sec >= 60){
+                this.Sec = 0;
+                iccMin(ct);
+            }
+            time = System.currentTimeMillis();
         }
     }
 
