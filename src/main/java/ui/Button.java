@@ -1,6 +1,11 @@
 package ui;
 
 import com.raylib.Raylib;
+import handler.Handler;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 import static com.raylib.Jaylib.*;
 import static com.raylib.Raylib.DrawText;
@@ -52,11 +57,15 @@ public class Button extends Label {
         if (CheckCollisionPointRec(GetMousePosition(), hitBox))
         {
             if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)){
-                //TODO Handler.trigger();
+                click();
             }
             int offset=64;
             DrawRectangle(x, y + offset, width + 64, 24, toolTipBackgroundColor);
             DrawText(tooltip, x + 10, y + offset + 4, fontSize > 8 ? fontSize - 8 : 1, toolTipColor);
         }
+    }
+
+    private void click(){
+
     }
 }
