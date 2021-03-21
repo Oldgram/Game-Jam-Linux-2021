@@ -106,6 +106,46 @@
     </event>
 
     <event>
+        <id>13</id>
+        <name>Un peux de sexisme !</name>
+        <description>Vous avez fais un magnifique tweet sexiste </description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>14</id>
+        <name>Des zombies!</name>
+        <description>Une attack de zombie est survenue , heureusement just quelque mort...</description>
+        <cost>0</cost>
+        <impact>-10</impact>
+    </event>
+
+    <event>
+        <id>15</id>
+        <name>Mein kampf </name>
+        <description>Vous avez fait un discour sur Mein Kampf , hélasse ça n'a pas fais Führer</description>
+        <cost>0</cost>
+        <impact>-10</impact>
+    </event>
+
+    <event>
+        <id>16</id>
+        <name>Mein kampf </name>
+        <description>Vous avez fait un discour sur Mein Kampf , ça a fais Führer</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>17</id>
+        <name>Le Carré vert</name>
+        <description>TOUT LE MONDE AIME VOTRE CARRE VERT!!!!</description>
+        <cost>0</cost>
+        <impact>100</impact>
+    </event>
+
+    <event>
         <id>97</id>
         <name>Erreur !</name>
         <description>Vous devez d'abord débloquer l'amélioration précédente !</description>

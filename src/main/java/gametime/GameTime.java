@@ -28,6 +28,11 @@ public class GameTime {
             "Semaine du 18 Janvier 2021"
     );
     private String actualDate = DateList.get(0);
+    private int numberOfEvent;
+
+    public GameTime(int numberOfEvent){
+        this.numberOfEvent = numberOfEvent;
+    }
 
 
     public void iccTick(Country ct) {
@@ -72,7 +77,7 @@ public class GameTime {
     private void changeActualDate(Country ct) {
         this.actualDate = this.DateList.get(this.getMin());
         Random r = new Random();
-        int eventId = r.nextInt(12)+1;
+        int eventId = r.nextInt(this.numberOfEvent)+1;
         State eventStat = ct.getStateList().get(r.nextInt(49));
         trigger("Event",eventStat,eventId);
     }
