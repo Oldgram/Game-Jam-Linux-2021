@@ -2,14 +2,20 @@ package gametime;
 
 
 import handler.Handler;
+import map.Map;
 import object.Object;
 import player.Player;
 import state.Country;
+import handler.Handler;
 import state.State;
+import map.Map.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+
 
 
 public class GameTime {
@@ -46,12 +52,13 @@ public class GameTime {
         return this.Sec;
     }
 
-    public void testsec() {
+    public void testsec(Map map) {
         if ( System.currentTimeMillis() - time >= 1000){
             this.Sec ++;
-            if (this.Sec >= 60){
+            if (this.Sec >= 20){
                 this.Sec = 0;
                 iccMin();
+                map.updateData();
             }
             time = System.currentTimeMillis();
         }

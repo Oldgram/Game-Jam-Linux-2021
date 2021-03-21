@@ -6,19 +6,27 @@ import static com.raylib.Jaylib.*;
 import static com.raylib.Raylib.DrawTexture;
 
 public class MapState extends MapComponent {
-    private static Color color;
+    Color oldColor;
+    Color color;
     String pathname;
     Texture2D texture;
 
     public MapState(String pathname, Double percentageRepublican) {
         super(50, 50);
         this.pathname = pathname;
-        Image image = LoadImage(this.pathname);
-        ImageResize(image,1400, 965);
-        ImageColorBrightness(image, 255);
-        ImageColorTint(image, blueOrRed(percentageRepublican));
-        this.texture = LoadTextureFromImage(image);
-        UnloadImage(image);
+        this.oldColor = BLACK;
+        this.color = blueOrRed(percentageRepublican);
+        if(this.oldColor != this.color){
+            System.out.println(this.pathname + " updated");
+            this.oldColor = this.color;
+            Image image = LoadImage(this.pathname);
+            ImageResize(image,1400, 965);
+            ImageColorBrightness(image, 255);
+            ImageColorTint(image, this.color);
+            this.texture = LoadTextureFromImage(image);
+            UnloadImage(image);
+        }
+
 
     }
 
@@ -27,30 +35,31 @@ public class MapState extends MapComponent {
     }
 
     private static Color blueOrRed(Double percentage){
+        Color colori = new Color();
         if (percentage < 10) {
-            color = rgba(0, 0, 255, 255);
+            colori = rgba(0, 0, 255, 255);
         } else if (percentage < 20) {
-            color = rgba(0, 128, 255, 255);
+            colori = rgba(0, 128, 255, 255);
         }else if (percentage < 30) {
-            color = rgba(51, 153, 255, 255);
+            colori = rgba(51, 153, 255, 255);
         }else if (percentage < 40) {
-            color = rgba(102, 178, 255, 255);
+            colori = rgba(102, 178, 255, 255);
         }else if (percentage < 49.5) {
-            color = rgba(153, 204, 255, 255);
+            colori = rgba(153, 204, 255, 255);
         } else if (percentage < 50.5) {
-            color = rgba(255, 255, 255, 255);
+            colori = rgba(255, 255, 255, 255);
         } else if (percentage < 60) {
-            color = rgba(255, 204, 204, 255);
+            colori = rgba(255, 204, 204, 255);
         }else if (percentage < 70) {
-            color = rgba(255, 153, 153, 255);
+            colori = rgba(255, 153, 153, 255);
         }else if (percentage < 80) {
-            color = rgba(255, 102, 102, 255);
+            colori = rgba(255, 102, 102, 255);
         }else if (percentage < 90) {
-            color = rgba(255, 51, 51, 255);
+            colori = rgba(255, 51, 51, 255);
         }else if (percentage <= 100) {
-            color = rgba(255, 0, 0, 255);
+            colori = rgba(255, 0, 0, 255);
         }
-        return color;
+        return colori;
     }
 
     @Override
