@@ -19,6 +19,7 @@ public class Button extends Label {
     String actionType;
     int actionId;
     boolean isHidden = false;
+    boolean isButtonBlocked;
 
     public Button(int x, int y, String text, int fontSize, String tooltip, Texture2D icon) {
         super(x, y, text, fontSize);
@@ -124,8 +125,13 @@ public class Button extends Label {
 
         if (CheckCollisionPointRec(GetMousePosition(), hitBox))
         {
-            if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)){
+            if (IsMouseButtonDown(MOUSE_LEFT_BUTTON) && !isButtonBlocked){
                 click();
+                isButtonBlocked = true;
+            }
+
+            if (IsMouseButtonUp(MOUSE_LEFT_BUTTON)){
+                isButtonBlocked = false;
             }
 
             if (this.icon != null){
@@ -139,7 +145,7 @@ public class Button extends Label {
 
     private void click(){
         //TODO: Une méthode pour afficher le nom et la description de l'événement déclenché
-
+        System.out.println("Coucou");
         if (this.state != null) {
             Country country = Country.getInstance();
             Object object = new Object();
