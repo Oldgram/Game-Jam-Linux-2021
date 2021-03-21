@@ -11,7 +11,7 @@ import static com.raylib.Raylib.DrawRectangle;
 public class UI {
     HashMap<staticComponents, UIComponentInterface> topRightPannelComponents;
     List<UIComponentInterface> bottomRightPannelComponents;
-    List<UIComponentInterface> bottomPannelComponents;
+    ScrollingText scrollingText;
 
     public enum staticComponents {
         STATE,
@@ -27,15 +27,15 @@ public class UI {
     public UI(){
         this.topRightPannelComponents = new HashMap<>();
         this.bottomRightPannelComponents = new ArrayList<>();
-        this.bottomPannelComponents = new ArrayList<>();
+        this.scrollingText = new ScrollingText(0, 1080 - 40, 1, "");
 
         initializeTopRightPanel();
     }
 
-    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<UIComponentInterface> bottomRight, List<UIComponentInterface> bottom){
+    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<UIComponentInterface> bottomRight, ScrollingText bottom){
         this.topRightPannelComponents = topRight;
         this.bottomRightPannelComponents = bottomRight;
-        this.bottomPannelComponents = bottom;
+        this.scrollingText = bottom;
 
         initializeTopRightPanel();
     }
@@ -77,9 +77,7 @@ public class UI {
             component.draw();
         }
 
-        for (UIComponentInterface component: bottomPannelComponents) {
-            component.draw();
-        }
+        scrollingText.draw();
     }
 
     public Collection<UIComponentInterface> getTopRightPannelComponents() {
@@ -106,15 +104,9 @@ public class UI {
         this.bottomRightPannelComponents.remove(uiComponent);
     }
 
-    public List<UIComponentInterface> getBottomPannelComponents() {
-        return bottomPannelComponents;
+    public void setScrollingText(String message) {
+        scrollingText.setText(message);
     }
 
-    public void addBottomPannelComponents(UIComponentInterface uiComponent) {
-        this.bottomPannelComponents.add(uiComponent);
-    }
 
-    public void removeBottomPannelComponents(UIComponentInterface uiComponent) {
-        this.bottomPannelComponents.remove(uiComponent);
-    }
 }
