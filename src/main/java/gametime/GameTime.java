@@ -49,7 +49,7 @@ public class GameTime {
     public void testsec() {
         if ( System.currentTimeMillis() - time >= 1000){
             this.Sec ++;
-            if (this.Sec >= 2){
+            if (this.Sec >= 60){
                 this.Sec = 0;
                 iccMin();
             }
