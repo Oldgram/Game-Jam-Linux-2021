@@ -1,21 +1,20 @@
 package handler;
 
-import player.Player;
-import state.State;
-import state.Country;
 import object.Object;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import player.Player;
+import state.Country;
+import state.State;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -31,7 +30,7 @@ public class Handler {
     public static void trigger(Object object, State state, Player player) {
         try {
             if (player.getActionPoints() >= object.getCost()) {
-                state.setRepublicanScore(state.getRepublicanScore() + object.getImpact());
+                state.addRepublicanScore(object.getImpact());
                 switch (object.getType()) {
                     case "Action":
                         triggerAction(object, state, player);
