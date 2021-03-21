@@ -40,11 +40,15 @@ public class GameTime {
     private String actualDate = DateList.get(0);
     private int numberOfEvent;
     private long time;
+    private boolean gameOver;
+    private double score;
 
     public GameTime(int numberOfEvent){
         this.country = Country.getInstance();
         this.numberOfEvent = numberOfEvent;
-        time = System.currentTimeMillis();
+        this.time = System.currentTimeMillis();
+        boolean gameOver = false;
+        double score;
     }
 
 
@@ -70,7 +74,11 @@ public class GameTime {
 
     public void iccMin() {
         this.Min++;
-        changeActualDate();
+        double a = changeActualDate();
+        if (a > 0.0) {
+            this.gameOver = true;
+            this.score = a;
+        }
     }
 
     public int getTick() {
@@ -81,7 +89,7 @@ public class GameTime {
         return this.actualDate;
     }
 
-    private void changeActualDate() {
+    private double changeActualDate() {
         if (this.Min <= 11) {
             this.actualDate = this.DateList.get(this.Min);
             Player p = Player.getInstance();
@@ -96,8 +104,13 @@ public class GameTime {
             Handler.trigger(object, eventState, p);
 
             country.getStateList().forEach(x -> x.republicanrandomchange(-5,2));
+            return 0.0;
         } else {
-            System.out.println(country.getWinner() * 100);
+            return country.getWinner() * 100;
         }
     }
+
+    public boolean isOver() { return this.gameOver; }
+
+    public double getScore() { return this.score; }
 }
