@@ -15,9 +15,9 @@ public class State {
     private boolean destroyed;
     private List<Object> occurredEvents;
     private boolean hasCoalFactory;
+    private final Random random = new Random();
 
     public State (String name, int population, int weight){
-        Random random = new Random();
 
         this.name = name;
         this.population = population;
@@ -83,4 +83,8 @@ public class State {
     public boolean hasCoalFactory() { return this.hasCoalFactory; }
 
     public void buildCoalFactory() { this.hasCoalFactory = true; }
+
+    public void republicanrandomchange(int min ,int max){
+        addRepublicanScore(random.nextInt(max - min + 1) + min);
+    }
 }

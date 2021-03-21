@@ -2,6 +2,7 @@ package handler;
 
 import player.Player;
 import state.State;
+import state.Country;
 import object.Object;
 
 import org.w3c.dom.Document;
@@ -20,6 +21,8 @@ import java.util.Random;
 
 public class Handler {
     private static final Random r = new Random();
+    private static Country country ;
+
     /**
      * @param object : the object (Action, Event, Upgrade) to be triggered
      * @param state : the targeted states on which the event will be applied, as a list of State
@@ -92,22 +95,55 @@ public class Handler {
         state.addEvent(event);
 
         switch (event.getId()) {
-            case 1: // Piqure d'insecte radioactif (positif)
-            case 2: // Piqure d'insecte radioactif (négatif)
-            case 3: // Tweet climatosceptique
-            case 12: // Cadeau ! Bonus de nombre d'électeurs
-                System.out.println(state.getRepublicanScore());
-                state.addRepublicanScore(event.getImpact());
-                System.out.println(state.getRepublicanScore());
+            case 1:
+                player.addActionPoints(5);
                 break;
-            case 9: // Catastrophe naturelle
-                state.setPopulation((int) (state.getPopulation() * 0.75));
+            case 2:
+                player.addActionPoints(-5);
+                break;
+            case 3:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-5,5));
+                break;
+            case 4:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-15,15));
+                break;
+            case 5:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(0,5));
+                break;
+            case 6:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-5,0));
+                break;
+            case 7:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(0,5));
+                break;
+            case 8:
+                state.republicanrandomchange(-10,0);
+                break;
+            case 9:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-10,0));
                 break;
             case 10:
                 state.destroy();
                 break;
             case 11:
                 player.addActionPoints(5);
+                break;
+            case 12:
+                state.republicanrandomchange(0,5);
+            case 13:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-10,10));
+                break;
+            case 14:
+                state.republicanrandomchange(-10,0);
+                break;
+            case 15:
+                state.republicanrandomchange(-5,0);
+                break;
+            case 16:
+                state.republicanrandomchange(0,5);
+                break;
+            case 17:
+                country.getStateList().stream().forEach(x -> x.republicanrandomchange(10,15));
                 break;
         }
     }

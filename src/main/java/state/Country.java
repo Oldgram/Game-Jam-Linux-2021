@@ -5,6 +5,13 @@ import java.util.List;
 
 public class Country {
 
+    private List<State> stateList;
+    public Country(){
+        this.makeliste();
+    }
+
+
+
     public State Alabama = new State("Alabama",4_903_185,7);
     public State Arizona = new State("Arizona",7_278_717,9);
     public State Arkansas = new State("Arkansas",3_017_804,4);
@@ -56,7 +63,7 @@ public class Country {
 
 
     
-    public List<State> getStateList() {
+    private void makeliste() {
         List<State> stateList = new ArrayList<State>();
         stateList.add(Alabama);
         stateList.add(Arizona);
@@ -106,7 +113,12 @@ public class Country {
         stateList.add(Washington);
         stateList.add(Wisconsin);
         stateList.add(Wyoming);
-        return  stateList;
+
+        this.stateList = stateList;
+    }
+
+    public List<State> getStateList(){
+        return stateList;
     }
 }
 
