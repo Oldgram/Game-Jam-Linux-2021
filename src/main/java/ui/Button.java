@@ -11,25 +11,25 @@ public class Button extends Label {
     Color toolTipBackgroundColor;
     Texture2D icon;
 
-    public Button(int x, int y, String text, String tooltip, Texture2D icon) {
-        super(x, y, text);
+    public Button(int x, int y, String text, int fontSize, String tooltip, Texture2D icon) {
+        super(x, y, text, fontSize);
         this.tooltip = tooltip;
         this.toolTipBackgroundColor = DARKGRAY;
         this.toolTipColor = RAYWHITE;
         this.icon = icon;
     }
 
-    public Button(int x, int y, String text, String tooltip, Color textColor, Color toolTipColor, Texture2D icon) {
-        super(x, y, text, textColor);
+    public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color toolTipColor, Texture2D icon) {
+        super(x, y, text, fontSize, textColor);
         this.tooltip = tooltip;
         this.toolTipBackgroundColor = DARKGRAY;
         this.toolTipColor = toolTipColor;
         this.icon = icon;
     }
 
-    public Button(int x, int y, String text, String tooltip, Color textColor, Color backgroundColor, Color toolTipColor,
+    public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color backgroundColor, Color toolTipColor,
                   Color toolTipBackgroundColor, Texture2D icon) {
-        super(x, y, text, textColor, backgroundColor);
+        super(x, y, text, fontSize, textColor, backgroundColor);
         this.tooltip = tooltip;
         this.toolTipBackgroundColor = toolTipBackgroundColor;
         this.toolTipColor = toolTipColor;
@@ -40,7 +40,7 @@ public class Button extends Label {
     public void draw() {
         int width = 180;
         DrawRectangle(x + 64, y, width, 64, backgroundColor);
-        DrawText(text, x + 64 + 10, y + 16, 28, textColor);
+        DrawText(text, x + 64 + 10, y + 16, fontSize, textColor);
 
         Raylib.Rectangle hitBox = new Raylib.Rectangle();
         DrawTexture(icon, x, y, WHITE);
@@ -56,7 +56,7 @@ public class Button extends Label {
             }
             int offset=64;
             DrawRectangle(x, y + offset, width + 64, 24, toolTipBackgroundColor);
-            DrawText(tooltip, x + 10, y + offset + 4, 16, toolTipColor);
+            DrawText(tooltip, x + 10, y + offset + 4, fontSize > 8 ? fontSize - 8 : 1, toolTipColor);
         }
     }
 }
