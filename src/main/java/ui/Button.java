@@ -148,9 +148,8 @@ public class Button extends Label {
     }
 
     private void click(){
-        //TODO: Une méthode pour afficher le nom et la description de l'événement déclenché
-        System.out.println("Coucou");
-        if (this.state != null) {
+        Player player = Player.getInstance();
+        if (player.getSelectedState() != null) {
             Country country = Country.getInstance();
             Object object = new Object();
 
@@ -158,6 +157,8 @@ public class Button extends Label {
                 object = Handler.getObject(actionType, actionId);
             } catch (Exception e) { e.printStackTrace(); }
             Handler.trigger(object, state, Player.getInstance());
+        } else {
+            player.setSelectedState(this.state);
         }
     }
 }
