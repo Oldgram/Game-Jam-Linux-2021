@@ -5,8 +5,10 @@ import event.Event;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class State {
+
     private final String name;
     private int republicanScore;
     private int population;
@@ -16,10 +18,12 @@ public class State {
     private List<Event> occurredEvents;
 
     public State (String name, int population, int weight){
+        Random random = new Random();
+
         this.name = name;
         this.population = population;
         this.weight = weight;
-        this.republicanScore = 50;
+        this.republicanScore = 35 + random.nextInt(31);
         this.destroyed = false;
         this.canVote = true;
         this.occurredEvents = new ArrayList<>(Collections.emptyList());
