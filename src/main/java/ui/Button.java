@@ -21,6 +21,17 @@ public class Button extends Label {
     boolean isHidden = false;
     boolean isButtonBlocked;
 
+    public Button(int x, int y, int fontSize, Texture2D icon, Object o, State state) {
+        super(x, y, o.getName(), fontSize);
+        this.tooltip = o.getDescription();
+        this.toolTipBackgroundColor = DARKGRAY;
+        this.toolTipColor = RAYWHITE;
+        this.icon = icon;
+        this.state = state;
+        this.actionType = o.getType();
+        this.actionId = o.getId();
+    }
+
     public Button(int x, int y, String text, int fontSize, String tooltip, Texture2D icon) {
         super(x, y, text, fontSize);
         this.tooltip = tooltip;
