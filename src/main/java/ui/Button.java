@@ -3,14 +3,9 @@ package ui;
 import com.raylib.Raylib;
 import handler.Handler;
 import object.Object;
-import org.xml.sax.SAXException;
 import player.Player;
 import state.Country;
 import state.State;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.util.List;
 
 import static com.raylib.Jaylib.*;
 import static com.raylib.Raylib.DrawText;
@@ -20,6 +15,10 @@ public class Button extends Label {
     Color toolTipColor;
     Color toolTipBackgroundColor;
     Texture2D icon;
+    State state;
+    String actionType;
+    int actionId;
+    boolean isHidden = false;
 
     public Button(int x, int y, String text, int fontSize, String tooltip, Texture2D icon) {
         super(x, y, text, fontSize);
@@ -27,6 +26,9 @@ public class Button extends Label {
         this.toolTipBackgroundColor = DARKGRAY;
         this.toolTipColor = RAYWHITE;
         this.icon = icon;
+        this.state = null;
+        this.actionType = null;
+        this.actionId = -1;
     }
 
     public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color toolTipColor, Texture2D icon) {
@@ -35,6 +37,9 @@ public class Button extends Label {
         this.toolTipBackgroundColor = DARKGRAY;
         this.toolTipColor = toolTipColor;
         this.icon = icon;
+        this.state = null;
+        this.actionType = null;
+        this.actionId = -1;
     }
 
     public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color backgroundColor, Color toolTipColor,
@@ -44,46 +49,105 @@ public class Button extends Label {
         this.toolTipBackgroundColor = toolTipBackgroundColor;
         this.toolTipColor = toolTipColor;
         this.icon = icon;
+        this.state = null;
+        this.actionType = null;
+        this.actionId = -1;
+    }
+
+    public Button(int x, int y, String text, int fontSize, String tooltip, Texture2D icon, State state, String actionType, int actionId) {
+        super(x, y, text, fontSize);
+        this.tooltip = tooltip;
+        this.toolTipBackgroundColor = DARKGRAY;
+        this.toolTipColor = RAYWHITE;
+        this.icon = icon;
+        this.state = state;
+        this.actionType = actionType;
+        this.actionId = actionId;
+    }
+
+    public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color toolTipColor, Texture2D icon
+                , State state, String actionType, int actionId) {
+        super(x, y, text, fontSize, textColor);
+        this.tooltip = tooltip;
+        this.toolTipBackgroundColor = DARKGRAY;
+        this.toolTipColor = toolTipColor;
+        this.icon = icon;
+        this.state = state;
+        this.actionType = actionType;
+        this.actionId = actionId;
+    }
+
+    public Button(int x, int y, String text, String tooltip, int fontSize, Color textColor, Color backgroundColor, Color toolTipColor,
+                  Color toolTipBackgroundColor, Texture2D icon, State state, String actionType, int actionId) {
+        super(x, y, text, fontSize, textColor, backgroundColor);
+        this.tooltip = tooltip;
+        this.toolTipBackgroundColor = toolTipBackgroundColor;
+        this.toolTipColor = toolTipColor;
+        this.icon = icon;
+        this.state = state;
+        this.actionType = actionType;
+        this.actionId = actionId;
     }
 
     @Override
     public void draw() {
-        int width = 180;
-        DrawRectangle(x + 64, y, width, 64, backgroundColor);
-        DrawText(text, x + 64 + 10, y + 16, fontSize, textColor);
+        if (isHidden) {
+            return;
+        }
 
+        if (state != null){
+            if(state.isDestroyed()) {
+                isHidden = true;
+            }
+        }
+
+        int width = 180;
+        int offset;
         Raylib.Rectangle hitBox = new Raylib.Rectangle();
-        DrawTexture(icon, x, y, WHITE);
         hitBox.x(x);
         hitBox.y(y);
-        hitBox.width(width + 64);
-        hitBox.height(64);
+
+        if (this.icon != null){
+            DrawRectangle(x + 64, y, width, 64, backgroundColor);
+            DrawText(text, x + 64 + 10, y + 16, fontSize, textColor);
+            DrawTexture(icon, x, y, WHITE);
+            hitBox.width(width + 64);
+            hitBox.height(64);
+            offset = 64;
+        } else {
+            DrawRectangle(x, y, width, 30, backgroundColor);
+            DrawText(text, x + 10, y + 7, fontSize, textColor);
+            hitBox.width(width);
+            hitBox.height(30);
+            offset = 30;
+        }
 
         if (CheckCollisionPointRec(GetMousePosition(), hitBox))
         {
             if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)){
                 click();
             }
-            int offset=64;
-            DrawRectangle(x, y + offset, width + 64, 24, toolTipBackgroundColor);
-            DrawText(tooltip, x + 10, y + offset + 4, fontSize > 8 ? fontSize - 8 : 1, toolTipColor);
+
+            if (this.icon != null){
+                DrawRectangle(x, y + offset, width + 64, 24, toolTipBackgroundColor);
+            } else {
+                DrawRectangle(x, y + offset, width, 24, toolTipBackgroundColor);
+            }
+            DrawText(tooltip, x + 10, y + offset + 4, fontSize > 4 ? fontSize - 4 : 1, toolTipColor);
         }
     }
 
     private void click(){
-        //TODO: Donner un type aux boutons (action ou upgrade) + Savoir quel est l'état sélectionné
         //TODO: Une méthode pour afficher le nom et la description de l'événement déclenché
-        //TODO: Désactiver le bouton si l'état est détruit (state.isDestroyed() == true)
 
-        Country country = Country.getInstance();
-        State state = country.getStateList().get(0); // TODO:Remplacer ici l'index du get par l'index de l'état sélectionné
-        Object object = new Object();
-        String type = "Action"; // TODO:Remplacer ici par le type du button
-        int id = 0; // TODO:Remplacer ici par l'id de l'action/update désirée
+        if (this.state != null) {
+            Country country = Country.getInstance();
+            Object object = new Object();
 
-        try {
-            object = Handler.getObject(type, id);
-        } catch (Exception e) { e.printStackTrace(); }
-        Handler.trigger(object, state, Player.getInstance());
+            try {
+                object = Handler.getObject(actionType, actionId);
+            } catch (Exception e) { e.printStackTrace(); }
+            Handler.trigger(object, state, Player.getInstance());
+        }
     }
 }

@@ -36,30 +36,6 @@ public class Label extends UIComponent {
         this.backgroundColor = backgroundColor;
     }
 
-    public Label(int x, int y, LocalDate localDate, int fontSize) {
-        super(x, y);
-        this.text = localDate.toString();
-        this.fontSize = fontSize;
-        this.textColor = RAYWHITE;
-        this.backgroundColor = GRAY;
-    }
-
-    public Label(int x, int y, LocalDate localDate, int fontSize, Color textColor) {
-        super(x, y);
-        this.text = localDate.toString();
-        this.fontSize = fontSize;
-        this.textColor = textColor;
-        this.backgroundColor = GRAY;
-    }
-
-    public Label(int x, int y, LocalDate localDate, int fontSize, Color textColor, Color backgroundColor) {
-        super(x, y);
-        this.text = localDate.toString();
-        this.fontSize = fontSize;
-        this.textColor = textColor;
-        this.backgroundColor = backgroundColor;
-    }
-
     public void setText(String text) {
         this.text = text;
     }
