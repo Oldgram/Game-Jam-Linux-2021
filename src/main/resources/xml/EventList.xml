@@ -2,9 +2,130 @@
 
 <class>
     <event>
+        <id>0</id>
+        <name>Erreur</name>
+        <description>Tu ne devrais pas voir ceci.</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
         <id>1</id>
-        <name>Stop the count</name>
-        <description>GAME OVER</description>
+        <name>Piqure d'insecte radioactif</name>
+        <description>Trump s'est fait piqué par un insecte radioactif ! Mais heureusement cela l'a rendu plus fort !</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>2</id>
+        <name>Piqure d'insecte radioactif</name>
+        <description>Trump s'est fait piqué par un insecte radioactif ! Cela l'a rendu plus faible !</description>
+        <cost>0</cost>
+        <impact>-10</impact>
+    </event>
+
+    <event>
+        <id>3</id>
+        <name>Tweet climatosceptique.</name>
+        <description>"Climate change is an hoax !"</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>4</id>
+        <name>Gros bouton rouge</name>
+        <description>Vous avez malencontreusement appuyé sur le bouton rouge, la Corée du Nord a été détruite</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>5</id>
+        <name>Trump bois un Pepsi Light.</name>
+        <description>Il perd du poids, tout le monde est dans impressionné !</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>6</id>
+        <name>Trump tweet : "JESUS est un loser !"</name>
+        <description>Beaucoup de catholiques sont outrés !</description>
+        <cost>0</cost>
+        <impact>-10</impact>
+    </event>
+
+    <event>
+        <id>7</id>
+        <name>Annonce de Trump</name>
+        <description>Apparemment, il aimerais bien ce taper sa fille !</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>8</id>
+        <name>Votes par correspondance</name>
+        <description>Arrivage soudain de vote par correspondance !</description>
+        <cost>0</cost>
+        <impact>-10</impact>
+    </event>
+
+    <event>
+        <id>9</id>
+        <name>Catastrophe naturelle</name>
+        <description>Une catastrophe naturelle a eu lieu !</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>10</id>
+        <name>Catastrophe naturelle grave</name>
+        <description>Une énorme catastrophe naturelle a eu lieu, l'état a été détruit !</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>11</id>
+        <name>Cadeau !</name>
+        <description>Suite à vos action, vous avez reçu 5 points d'action.</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>12</id>
+        <name>Cadeau !</name>
+        <description>Suite à vos action, votre nombre d'électeurs a augmenté !</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </event>
+
+    <event>
+        <id>97</id>
+        <name>Erreur !</name>
+        <description>Vous devez d'abord débloquer l'amélioration précédente !</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>98</id>
+        <name>Erreur !</name>
+        <description>Vous devez d'abord débloquer l'amélioration correspondante !</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
+        <id>99</id>
+        <name>Erreur !</name>
+        <description>Vous n'avez pas assez de points d'action !</description>
+        <cost>0</cost>
         <impact>0</impact>
     </event>
 </class>

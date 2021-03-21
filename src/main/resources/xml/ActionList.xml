@@ -1,10 +1,83 @@
 <?xml version="1.0"?>
 
 <class>
+    <event>
+        <id>0</id>
+        <name>Erreur</name>
+        <description>Tu ne devrais pas voir ceci.</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
     <action>
         <id>1</id>
-        <name>Discours</name>
+        <name>Faire un discours</name>
         <description>Lance un discours pour convertir des électeurs.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+        <type>0</type>
+    </action>
+
+    <action>
+        <id>2</id>
+        <name>Tweeter</name>
+        <description>Déclenche un évènement aléatoire.</description>
+        <cost>0</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>3</id>
+        <name>Bloquer un bureau de vote</name>
+        <description>Empêche 1% de la population d'un état de voter</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>4</id>
+        <name>Brûler les bureaux de vote</name>
+        <description>Empêche 5% de la population d'un état de voter.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>5</id>
+        <name>Ouvrir une usine à charbon</name>
+        <description>Augmente le nombre de vote dans l'état.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>6</id>
+        <name>Gros bouton rouge</name>
+        <description>Détruit un état.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>7</id>
+        <name>Diminuer l'âge minimal du port d'armes.</name>
+        <description>Permet de gagner des électeurs.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>8</id>
+        <name>Distribution d'armes.</name>
+        <description>Armes gratuites pour tout le monde ! Permet de gagner des électeurs.</description>
+        <cost>10</cost>
+        <impact>10</impact>
+    </action>
+
+    <action>
+        <id>9</id>
+        <name>Placement de produit</name>
+        <description>Action gratuite.</description>
         <cost>10</cost>
         <impact>10</impact>
     </action>
