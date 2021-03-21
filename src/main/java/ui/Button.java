@@ -75,7 +75,7 @@ public class Button extends Label {
         //TODO: Une méthode pour afficher le nom et la description de l'événement déclenché
         //TODO: Désactiver le bouton si l'état est détruit (state.isDestroyed() == true)
 
-        Country country = new Country();
+        Country country = Country.getInstance();
         State state = country.getStateList().get(0); // TODO:Remplacer ici l'index du get par l'index de l'état sélectionné
         Object object = new Object();
         String type = "Action"; // TODO:Remplacer ici par le type du button

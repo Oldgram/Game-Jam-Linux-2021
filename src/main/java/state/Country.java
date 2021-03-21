@@ -1,13 +1,24 @@
 package state;
 
+import player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Country {
 
     private List<State> stateList;
-    public Country(){
+    private Country(){
         this.makeliste();
+    }
+
+    private static Country INSTANCE = new Country();
+
+    public static Country getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Country();
+        }
+        return INSTANCE;
     }
 
 
