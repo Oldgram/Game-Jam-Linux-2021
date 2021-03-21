@@ -92,6 +92,7 @@ public class Handler {
     }
 
     private static void triggerEvent(Object event, State state, Player player) {
+        System.out.println(event.getName() + " : Triggered on state : " + state.getName());
         state.addEvent(event);
 
         switch (event.getId()) {

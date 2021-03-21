@@ -34,7 +34,7 @@ public class Object {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        return id == o.id && Objects.equals(name, o.name);
+        return Objects.equals(type, o.type) && id == o.id && Objects.equals(name, o.name);
     }
 
     public String getType() { return this.type; }
