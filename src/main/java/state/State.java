@@ -85,6 +85,7 @@ public class State {
     public void buildCoalFactory() { this.hasCoalFactory = true; }
 
     public void republicanrandomchange(int min ,int max){
-        addRepublicanScore(random.nextInt(max - min + 1) + min);
+        if (!this.hasCoalFactory) addRepublicanScore(random.nextInt(max - min + 1) + min);
+        else addRepublicanScore(random.nextInt(max - (min+3) + 1) + (min+3));
     }
 }
