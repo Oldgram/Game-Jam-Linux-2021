@@ -35,14 +35,14 @@ public class ScrollingText extends UIComponent{
     @Override
     public void draw() {
         increment();
-        DrawText(text, x, y, 28, GRAY);
+        DrawText(text, x, y, 28, textColor);
     }
 
     public void increment() {
         x += speed;
-        if (x > 1920) { // TODO: Le faire en fonction de la taille de la fenetre hihi
+        if (x > 1920 + 300) { // TODO: Le faire en fonction de la taille de la fenetre hihi
             x = 0;
-        } else if (x < 0) {
+        } else if (x < -300) {
             x = 1080;
         }
     }
