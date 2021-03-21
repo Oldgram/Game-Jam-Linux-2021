@@ -13,7 +13,7 @@ import java.util.Random;
 
 
 public class GameTime {
-    private static Country country ;
+    private Country country ;
     private int Tick = 0;
     private int Sec = 0;
     private int Min = 0;
@@ -36,6 +36,7 @@ public class GameTime {
     private long time;
 
     public GameTime(int numberOfEvent){
+        this.country = Country.getInstance();
         this.numberOfEvent = numberOfEvent;
         time = System.currentTimeMillis();
     }
@@ -48,7 +49,7 @@ public class GameTime {
     public void testsec() {
         if ( System.currentTimeMillis() - time >= 1000){
             this.Sec ++;
-            if (this.Sec >= 60){
+            if (this.Sec >= 2){
                 this.Sec = 0;
                 iccMin();
             }
@@ -61,7 +62,7 @@ public class GameTime {
     }
 
     public void iccMin() {
-        this.Min ++;
+        this.Min++;
         changeActualDate();
     }
 
@@ -74,20 +75,22 @@ public class GameTime {
     }
 
     private void changeActualDate() {
-        this.actualDate = this.DateList.get(this.getMin());
-        Player p = Player.getInstance();
-        p.addActionPoints(p.getActionPool());
-        Random r = new Random();
-        int eventId = r.nextInt(this.numberOfEvent)+1;
-        Object object = new Object();
-        try {
-            object = Handler.getObject("Event", eventId);
-        } catch (Exception e) { e.printStackTrace(); }
-        State eventState = country.getStateList().get(r.nextInt(49));
-        Handler.trigger(object, eventState, p);
+        if (this.Min <= 11) {
+            this.actualDate = this.DateList.get(this.Min);
+            Player p = Player.getInstance();
+            p.addActionPoints(p.getActionPool());
+            Random r = new Random();
+            int eventId = r.nextInt(this.numberOfEvent)+1;
+            Object object = new Object();
+            try {
+                object = Handler.getObject("Event", eventId);
+            } catch (Exception e) { e.printStackTrace(); }
+            State eventState = country.getStateList().get(r.nextInt(48));
+            Handler.trigger(object, eventState, p);
 
-        country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
-
-
+            country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
+        } else {
+            System.out.println(country.getWinner() * 100);
+        }
     }
 }

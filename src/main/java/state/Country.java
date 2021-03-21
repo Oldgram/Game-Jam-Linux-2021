@@ -129,5 +129,16 @@ public class Country {
     public List<State> getStateList(){
         return stateList;
     }
+
+    public double getWinner() {
+        int totalPopulation = stateList.stream().mapToInt(State::getPopulation).sum();
+        double totalRepublicanScore = 0;
+
+        for (State state : stateList) {
+            totalRepublicanScore += state.getPopulation() * ((double) state.getRepublicanScore() / 100);
+        }
+
+        return totalRepublicanScore / totalPopulation;
+    }
 }
 
