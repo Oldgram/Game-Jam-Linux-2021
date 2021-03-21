@@ -1,16 +1,28 @@
 package state;
 
+import event.Event;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class State {
     private final String name;
     private int republicanScore;
     private int population;
     private final int weight;
+    private boolean destroyed;
+    private boolean canVote;
+    private List<Event> occurredEvents;
 
     public State (String name, int population, int weight){
         this.name = name;
         this.population = population;
         this.weight = weight;
         this.republicanScore = 50;
+        this.destroyed = false;
+        this.canVote = true;
+        this.occurredEvents = new ArrayList<>(Collections.emptyList());
     }
 
     public State (String name, int population, int weight, int republicanScore){
@@ -22,11 +34,11 @@ public class State {
 
     @Override
     public String toString() {
-        return "name=" + name;
+        return "name=" + this.name;
     }
 
     public int getRepublicanScore() {
-        return republicanScore;
+        return this.republicanScore;
     }
 
     public void setRepublicanScore(int republicanScore) {
@@ -34,11 +46,11 @@ public class State {
     }
 
     public int getDemocratScore() {
-        return population - republicanScore;
+        return this.population - this.republicanScore;
     }
 
     public int getPopulation() {
-        return population;
+        return this.population;
     }
 
     public void setPopulation(int population) {
@@ -46,10 +58,22 @@ public class State {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getWeight() {
-        return weight;
+        return this.weight;
     }
+
+    public boolean isDestroyed() { return this.destroyed; }
+
+    public void destroy() { this.destroyed = true; }
+
+    public boolean canVote() { return this.canVote;}
+
+    public void setVoteAbility(boolean ability) { this.canVote = ability; }
+
+    public List<Event> getOccurredEvents() { return this.occurredEvents; }
+
+    public void addEvent(Event event) { this.occurredEvents.add(event); }
 }
