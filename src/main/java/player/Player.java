@@ -11,10 +11,19 @@ public class Player {
     private int pointsGeneration;
     private List<Object> upgradeList;
 
-    public Player() {
+    private Player() {
         this.actionPoints = 0;
         this.pointsGeneration = 1;
         this.upgradeList = new ArrayList<>(Collections.emptyList());
+    }
+
+    private static Player INSTANCE = new Player();
+
+    public static Player getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Player();
+        }
+        return INSTANCE;
     }
 
     public int getActionPoints() { return this.actionPoints; }

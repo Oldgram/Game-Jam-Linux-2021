@@ -10,6 +10,15 @@ public class Object {
     private final int cost;
     private final int impact;
 
+    public Object() {
+        this.type = "Action";
+        this.id = 0;
+        this.name = null;
+        this.description = null;
+        this.cost = 0;
+        this.impact = 0;
+    }
+
     public Object(String type, int id, String name, String description, int cost, int impact) {
         this.type = type;
         this.id = id;

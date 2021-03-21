@@ -2,10 +2,15 @@ package ui;
 
 import com.raylib.Raylib;
 import handler.Handler;
+import object.Object;
 import org.xml.sax.SAXException;
+import player.Player;
+import state.Country;
+import state.State;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.List;
 
 import static com.raylib.Jaylib.*;
 import static com.raylib.Raylib.DrawText;
@@ -66,6 +71,19 @@ public class Button extends Label {
     }
 
     private void click(){
+        //TODO: Donner un type aux boutons (action ou upgrade) + Savoir quel est l'état sélectionné
+        //TODO: Une méthode pour afficher le nom et la description de l'événement déclenché
+        //TODO: Désactiver le bouton si l'état est détruit (state.isDestroyed() == true)
 
+        Country country = new Country();
+        State state = country.getStateList().get(0); // TODO:Remplacer ici l'index du get par l'index de l'état sélectionné
+        Object object = new Object();
+        String type = "Action"; // TODO:Remplacer ici par le type du button
+        int id = 0; // TODO:Remplacer ici par l'id de l'action/update désirée
+
+        try {
+            object = Handler.getObject(type, id);
+        } catch (Exception e) { e.printStackTrace(); }
+        Handler.trigger(object, state, Player.getInstance());
     }
 }

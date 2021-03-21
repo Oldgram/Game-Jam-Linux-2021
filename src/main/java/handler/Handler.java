@@ -22,30 +22,26 @@ public class Handler {
     private static final Random r = new Random();
     /**
      * @param object : the object (Action, Event, Upgrade) to be triggered
-     * @param targetStates : the targeted states on which the event will be applied, as a list of State
+     * @param state : the targeted states on which the event will be applied, as a list of State
      * @param player : the player as an instance of Player
-     * @return the eventId if it was triggered correctly, 0 otherwise;
      */
-    public static int trigger(Object object, List<State> targetStates, Player player) {
+    public static void trigger(Object object, State state, Player player) {
         try {
             if (player.getActionPoints() >= object.getCost()) {
-                loop : for (State state : targetStates) {
-                    state.setRepublicanScore(state.getRepublicanScore() + object.getImpact());
-                    switch (object.getType()) {
-                        case "Action":
-                            triggerAction(object, state, player);
-                            break;
-                        case "Event":
-                            triggerEvent(object, state, player);
-                            break;
-                        case "Upgrade":
-                            triggerUpgrade(object, state, player);
-                            break loop;
-                    }
+                state.setRepublicanScore(state.getRepublicanScore() + object.getImpact());
+                switch (object.getType()) {
+                    case "Action":
+                        triggerAction(object, state, player);
+                        break;
+                    case "Event":
+                        triggerEvent(object, state, player);
+                        break;
+                    case "Upgrade":
+                        triggerUpgrade(object, state, player);
+                        break;
                 }
             }
-        } catch (Exception e) { e.fillInStackTrace(); return 0; }
-        return object.getId();
+        } catch (Exception e) { e.fillInStackTrace();}
     }
 
     private static void triggerAction(Object action, State state, Player player) throws ParserConfigurationException, SAXException, IOException {
@@ -100,7 +96,9 @@ public class Handler {
             case 2: // Piqure d'insecte radioactif (négatif)
             case 3: // Tweet climatosceptique
             case 12: // Cadeau ! Bonus de nombre d'électeurs
-                state.addRepublicanScore( event.getImpact());
+                System.out.println(state.getRepublicanScore());
+                state.addRepublicanScore(event.getImpact());
+                System.out.println(state.getRepublicanScore());
                 break;
             case 9: // Catastrophe naturelle
                 state.setPopulation((int) (state.getPopulation() * 0.75));

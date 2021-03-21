@@ -2,6 +2,14 @@
 
 <class>
     <event>
+        <id>0</id>
+        <name>Erreur</name>
+        <description>Tu ne devrais pas voir ceci.</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
+    <event>
         <id>1</id>
         <name>Piqure d'insecte radioactif</name>
         <description>Trump s'est fait piqué par un insecte radioactif ! Mais heureusement cela l'a rendu plus fort !</description>

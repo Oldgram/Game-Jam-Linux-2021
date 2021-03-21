@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 
 <class>
+    <event>
+        <id>0</id>
+        <name>Erreur</name>
+        <description>Tu ne devrais pas voir ceci.</description>
+        <cost>0</cost>
+        <impact>0</impact>
+    </event>
+
     <upgrade>
         <id>1</id>
         <name>Twitter</name>
