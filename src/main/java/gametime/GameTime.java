@@ -1,8 +1,11 @@
 package gametime;
 
 
+import object.Object;
+import player.Player;
 import state.Country;
 import handler.Handler;
+import state.State;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +81,11 @@ public class GameTime {
         this.actualDate = this.DateList.get(this.getMin());
         Random r = new Random();
         int eventId = r.nextInt(this.numberOfEvent)+1;
-        State eventStat = ct.getStateList().get(r.nextInt(49));
-        trigger("Event",eventStat,eventId);
+        Object object = new Object();
+        try {
+            object = Handler.getObject("Event", eventId);
+        } catch (Exception e) { e.printStackTrace(); }
+        State eventState = ct.getStateList().get(r.nextInt(49));
+        Handler.trigger(object, eventState, Player.getInstance());
     }
 }

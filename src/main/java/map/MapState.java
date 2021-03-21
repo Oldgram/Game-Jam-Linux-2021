@@ -5,12 +5,12 @@ import java.util.stream.Stream;
 import static com.raylib.Jaylib.*;
 import static com.raylib.Raylib.DrawTexture;
 
-public class State extends MapComponent {
+public class MapState extends MapComponent {
     private static Color color;
     String pathname;
     Texture2D texture;
 
-    public State(String pathname, Double percentageRepublican) {
+    public MapState(String pathname, Double percentageRepublican) {
         super(50, 50);
         this.pathname = pathname;
         Image image = LoadImage(this.pathname);

@@ -5,11 +5,9 @@ import java.util.*;
 
 import state.Country;
 
-import static com.raylib.Jaylib.*;
-
 public class Map {
     private final Country country;
-    List<State> states;
+    List<MapState> states;
 
     public Map(Country country) {
         this.states = new ArrayList<>();
@@ -27,7 +25,7 @@ public class Map {
             for (state.State state: this.country.getStateList()
                  ) {
                 if(state.getName().equals(file.getName().replace(".png", ""))){
-                    this.states.add(new State(file.getPath(), (double) state.getRepublicanScore()));
+                    this.states.add(new MapState(file.getPath(), (double) state.getRepublicanScore()));
                     break;
                 }else{
                     System.out.println(state.getName());
@@ -41,7 +39,7 @@ public class Map {
 
     public void update() {
 
-        for (State component : states) {
+        for (MapState component : states) {
             component.draw();
         }
     }
