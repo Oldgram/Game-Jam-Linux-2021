@@ -103,25 +103,25 @@ public class Handler {
                 player.addActionPoints(-5);
                 break;
             case 3:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-5,5));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-5,5));
                 break;
             case 4:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-15,15));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-15,15));
                 break;
             case 5:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(0,5));
+                country.getStateList().forEach(x -> x.republicanrandomchange(0,5));
                 break;
             case 6:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-5,0));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-5,0));
                 break;
             case 7:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(0,5));
+                country.getStateList().forEach(x -> x.republicanrandomchange(0,5));
                 break;
             case 8:
                 state.republicanrandomchange(-10,0);
                 break;
             case 9:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-10,0));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-10,0));
                 break;
             case 10:
                 state.destroy();
@@ -132,7 +132,7 @@ public class Handler {
             case 12:
                 state.republicanrandomchange(0,5);
             case 13:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(-10,10));
+                country.getStateList().forEach(x -> x.republicanrandomchange(-10,10));
                 break;
             case 14:
                 state.republicanrandomchange(-10,0);
@@ -144,7 +144,7 @@ public class Handler {
                 state.republicanrandomchange(0,5);
                 break;
             case 17:
-                country.getStateList().stream().forEach(x -> x.republicanrandomchange(10,15));
+                country.getStateList().forEach(x -> x.republicanrandomchange(10,15));
                 break;
         }
     }

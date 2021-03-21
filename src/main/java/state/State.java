@@ -50,6 +50,7 @@ public class State {
 
     public void addRepublicanScore(int amount) {
         this.republicanScore += amount;
+        if (this.republicanScore > 100) { this.republicanScore = 100; }
     }
 
     public int getDemocratScore() {
