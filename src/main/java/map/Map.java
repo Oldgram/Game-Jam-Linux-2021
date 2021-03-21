@@ -16,7 +16,8 @@ public class Map {
         initializeStates();
     }
 
-    private void initializeStates() {
+    public void initializeStates() {
+        this.states.clear();
         File directory = new File("./src/main/resources/assets/states/");
         for (File file : Objects.requireNonNull(directory.listFiles())
         ) {
@@ -30,8 +31,11 @@ public class Map {
         }
     }
 
-    public void update() {
+    public void updateData(){
+        initializeStates();
+    }
 
+    public void update() {
         for (MapState component : states) {
             component.draw();
         }
