@@ -160,7 +160,8 @@ public class Button extends Label {
 
     private void click(){
         Player player = Player.getInstance();
-        if (player.getSelectedState() != null) {
+        State selectedState = player.getSelectedState();
+        if (selectedState != null && selectedState == this.state) {
             Country country = Country.getInstance();
             Object object = new Object();
 
