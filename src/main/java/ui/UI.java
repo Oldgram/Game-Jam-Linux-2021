@@ -10,7 +10,7 @@ import static com.raylib.Raylib.DrawRectangle;
 
 public class UI {
     HashMap<staticComponents, UIComponentInterface> topRightPannelComponents;
-    List<UIComponentInterface> bottomRightPannelComponents;
+    List<Button> bottomRightPannelButtons;
     ScrollingText scrollingText;
 
     public enum staticComponents {
@@ -26,15 +26,15 @@ public class UI {
 
     public UI(){
         this.topRightPannelComponents = new HashMap<>();
-        this.bottomRightPannelComponents = new ArrayList<>();
+        this.bottomRightPannelButtons = new ArrayList<>();
         this.scrollingText = new ScrollingText(0, 1000 - 33, 1, "Default", WHITE);
 
         initializeTopRightPanel();
     }
 
-    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<UIComponentInterface> bottomRight){
+    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<Button> bottomRight){
         this.topRightPannelComponents = topRight;
-        this.bottomRightPannelComponents = bottomRight;
+        this.bottomRightPannelButtons = bottomRight;
         this.scrollingText = new ScrollingText(0, 1000 - 33, 1, "Default", WHITE);
 
         initializeTopRightPanel();
@@ -73,8 +73,16 @@ public class UI {
             component.draw();
         }
 
-        for (UIComponentInterface component: bottomRightPannelComponents) {
-            component.draw();
+        int y = 350;
+        int i = 0;
+        for (Button component: bottomRightPannelButtons) {
+            if (i % 2 == 0) {
+                component.draw(1920 - 460, y);
+            } else {
+                component.draw(1920 - 230, y);
+                y += 140;
+            }
+            i += 1;
         }
 
         scrollingText.draw();
@@ -92,16 +100,16 @@ public class UI {
         this.topRightPannelComponents.remove(staticComponents);
     }
 
-    public List<UIComponentInterface> getBottomRightPannelComponents() {
-        return bottomRightPannelComponents;
+    public List<Button> getBottomRightPannelButtons() {
+        return bottomRightPannelButtons;
     }
 
-    public void addBottomRightPannelComponents(UIComponentInterface uiComponent) {
-        this.bottomRightPannelComponents.add(uiComponent);
+    public void addBottomRightPannelComponents(Button button) {
+        this.bottomRightPannelButtons.add(button);
     }
 
     public void removeBottomRightPannelComponents(UIComponentInterface uiComponent) {
-        this.bottomRightPannelComponents.remove(uiComponent);
+        this.bottomRightPannelButtons.remove(uiComponent);
     }
 
     public void setScrollingText(String message) {

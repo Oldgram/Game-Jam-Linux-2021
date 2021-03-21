@@ -41,9 +41,9 @@ public class ScrollingText extends UIComponent{
     public void increment() {
         x += speed;
         if (x > 1920 + 300) { // TODO: Le faire en fonction de la taille de la fenetre hihi
-            x = 0;
+            x = -300;
         } else if (x < -300) {
-            x = 1080;
+            x = 1920 + 300;
         }
     }
 }

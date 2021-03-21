@@ -92,6 +92,10 @@ public class Button extends Label {
 
     @Override
     public void draw() {
+        draw(x, y);
+    }
+
+    public void draw(int x, int y) {
         if (isHidden) {
             return;
         }
@@ -135,7 +139,7 @@ public class Button extends Label {
             }
 
             if (this.icon != null){
-                DrawRectangle(x, y + offset, width + 64, 24, toolTipBackgroundColor);
+                DrawRectangle(x, y + offset, width + 16, 24, toolTipBackgroundColor);
             } else {
                 DrawRectangle(x, y + offset, width, 24, toolTipBackgroundColor);
             }
