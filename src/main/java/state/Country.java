@@ -33,7 +33,7 @@ public class Country {
     public State DakotaDuSud = new State("Dakota du Sud",884_659,1);
     public State Delaware = new State("Delaware",973_764,1);
     public State Floride = new State("Floride",21_477_737,27);
-    public State Georgie = new State("Géorgie",10_671_423,14);
+    public State Georgie = new State("Georgie",10_671_423,14);
     public State Idaho = new State("Idaho",1_787_065,2);
     public State Illinois = new State("Illinois",12_671_821,18);
     public State Indiana = new State("Indiana",6_732_219,9);

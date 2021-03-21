@@ -14,7 +14,7 @@ public class MapState extends MapComponent {
         super(50, 50);
         this.pathname = pathname;
         Image image = LoadImage(this.pathname);
-        ImageResize(image,1280, 882);
+        ImageResize(image,1400, 965);
         ImageColorBrightness(image, 255);
         ImageColorTint(image, blueOrRed(percentageRepublican));
         this.texture = LoadTextureFromImage(image);
@@ -22,7 +22,7 @@ public class MapState extends MapComponent {
 
     }
 
-    private static Color rgba(int var0, int var1, int var2, int var3) {
+    public static Color rgba(int var0, int var1, int var2, int var3) {
         return (new Color()).r((byte)var0).g((byte)var1).b((byte)var2).a((byte)var3);
     }
 
@@ -35,9 +35,9 @@ public class MapState extends MapComponent {
             color = rgba(51, 153, 255, 255);
         }else if (percentage < 40) {
             color = rgba(102, 178, 255, 255);
-        }else if (percentage < 48) {
+        }else if (percentage < 49.5) {
             color = rgba(153, 204, 255, 255);
-        } else if (percentage < 52) {
+        } else if (percentage < 50.5) {
             color = rgba(255, 255, 255, 255);
         } else if (percentage < 60) {
             color = rgba(255, 204, 204, 255);
@@ -55,6 +55,6 @@ public class MapState extends MapComponent {
 
     @Override
     public void draw(){
-        DrawTexture(this.texture, 75, 50, WHITE);
+        DrawTexture(this.texture, 35, 50, WHITE);
     }
 }
