@@ -6,6 +6,22 @@
         <name>Twitter</name>
         <description>Permets de propager la vérité vraie.</description>
         <cost>10</cost>
-        <impact>100</impact>
+        <impact>0</impact>
+    </upgrade>
+
+    <upgrade>
+        <id>2</id>
+        <name>Aller à l'école</name>
+        <description>Permet d'avoir l'air éduqué.</description>
+        <cost>10</cost>
+        <impact>0</impact>
+    </upgrade>
+
+    <upgrade>
+        <id>3</id>
+        <name>Acheter un diplôme.</name>
+        <description>Vous êtes riche, pourquoi perdre du temps à faire des études quand vous pouvez juste acheter votre diplôme ?.</description>
+        <cost>10</cost>
+        <impact>0</impact>
     </upgrade>
 </class>

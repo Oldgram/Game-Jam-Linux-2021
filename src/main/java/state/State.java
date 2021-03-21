@@ -1,6 +1,6 @@
 package state;
 
-import event.Event;
+import object.Object;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.Random;
 
 public class State {
-
     private final String name;
     private int republicanScore;
     private int population;
     private final int weight;
     private boolean destroyed;
-    private boolean canVote;
-    private List<Event> occurredEvents;
+    private List<Object> occurredEvents;
+    private boolean hasCoalFactory;
 
     public State (String name, int population, int weight){
         Random random = new Random();
@@ -25,8 +24,8 @@ public class State {
         this.weight = weight;
         this.republicanScore = 35 + random.nextInt(31);
         this.destroyed = false;
-        this.canVote = true;
         this.occurredEvents = new ArrayList<>(Collections.emptyList());
+        this.hasCoalFactory = false;
     }
 
     public State (String name, int population, int weight, int republicanScore){
@@ -47,6 +46,10 @@ public class State {
 
     public void setRepublicanScore(int republicanScore) {
         this.republicanScore = republicanScore;
+    }
+
+    public void addRepublicanScore(int amount) {
+        this.republicanScore += amount;
     }
 
     public int getDemocratScore() {
@@ -73,11 +76,11 @@ public class State {
 
     public void destroy() { this.destroyed = true; }
 
-    public boolean canVote() { return this.canVote;}
+    public List<Object> getOccurredEvents() { return this.occurredEvents; }
 
-    public void setVoteAbility(boolean ability) { this.canVote = ability; }
+    public void addEvent(Object event) { this.occurredEvents.add(event); }
 
-    public List<Event> getOccurredEvents() { return this.occurredEvents; }
+    public boolean hasCoalFactory() { return this.hasCoalFactory; }
 
-    public void addEvent(Event event) { this.occurredEvents.add(event); }
+    public void buildCoalFactory() { this.hasCoalFactory = true; }
 }
