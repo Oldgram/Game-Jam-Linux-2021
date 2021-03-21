@@ -27,15 +27,15 @@ public class UI {
     public UI(){
         this.topRightPannelComponents = new HashMap<>();
         this.bottomRightPannelComponents = new ArrayList<>();
-        this.scrollingText = new ScrollingText(0, 1080 - 40, 1, "");
+        this.scrollingText = new ScrollingText(0, 1000 - 33, 1, "Default", WHITE);
 
         initializeTopRightPanel();
     }
 
-    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<UIComponentInterface> bottomRight, ScrollingText bottom){
+    public UI(HashMap<staticComponents, UIComponentInterface> topRight, List<UIComponentInterface> bottomRight){
         this.topRightPannelComponents = topRight;
         this.bottomRightPannelComponents = bottomRight;
-        this.scrollingText = bottom;
+        this.scrollingText = new ScrollingText(0, 1000 - 33, 1, "Default", WHITE);
 
         initializeTopRightPanel();
     }
@@ -44,7 +44,7 @@ public class UI {
         DrawRectangle(1920 - 490, 0, 490, 1080, DARKGRAY);
         DrawRectangle(1920 - 480, 0, 480, 310, GRAY); // Top right pannel
         DrawRectangle(1920 - 480, 320, 480, 1080 - 300, GRAY); // Bottom right pannel
-        DrawRectangle(0, 1080 - 40, 1920, 40, DARKGRAY); // Bottom pannel
+        DrawRectangle(0, 1000 - 40, 1920, 40, DARKGRAY); // Bottom pannel
     }
 
     private void initializeTopRightPanel(){
